@@ -1,0 +1,81 @@
+Introduction to F#
+
+let lucky = 3 + 4
+let unlucky = lucky + 6
+
+let duplicated = "original value"
+let duplicated = "new value"  // ERROR!!! It's immutable and this is a double definition
+
+let mutable duplicated = "original value"
+duplicated <- "new value"
+
+// Infering type
+let anInt = 10
+let aFloat = 20.0
+let aString = "I'm a string!"
+
+printfn "hello world from Try F#!"
+printfn "The answer is %d" 42
+printfn "The answer is %d" "not an integer!" //ERROR
+printfn "The answer is %s" "not an integer!" //CORRECT
+
+- FUNCTIONS
+
+let add x y =
+    x + y
+add 2 2
+
+// This results in an ERROR.
+let toHackerTalk phrase =
+    phrase.Replace('t', '7').Replace('o', '0')   // in this case we have to specify the type (string)
+let toHackerTalk (phrase:string) =
+    phrase.Replace('t', '7').Replace('o', '0') // CORRECT
+
+- FUNCTION AS VALUES
+
+let quadruple x =    
+    let duo x =
+        x * 2
+
+    duo(duo(x))
+
+quadruple 2  // duo is an inner function, so we cannot call directly
+
+
+let chrisTest test =
+    test "Chris"
+
+let isMe x =
+    if x = "Chris" then
+        "it is Chris!"
+    else
+        "it's someone else"
+
+chrisTest isMe  // resutl "it is Chris"
+
+- LAMBDA Func
+
+let add = (fun x y -> x + y)
+add 2 2
+
+let twoTest test =
+    test 2
+
+twoTest (fun x -> x < 0) // result is false
+
+- F# Lists (F# lists are singly linked lists!!!)
+
+let evens = [2; 4; 6; 8]
+
+let firstHundred = [0..100] // result is [0; 1; 2; 3; 4; 5; 6; 7; 8; 9; 10; ... 96; 97; 98; 99; 100] 
+let letters = ['a'..'z'] // result is ['a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'; 'j'; 'k'; 'l'; 'm'; 'n'; 'o'; 'p'; 'q'; 'r'; 's'; 't'; 'u'; 'v'; 'w'; 'x'; 'y'; 'z']
+
+let firstHundred = [0..100]
+let doubled = List.map (fun x -> x * 2) firstHundred  // result is [0; 2; 4; 6; 8; 10; 12; 14; 16; 18; 20; ...  192; 194; 196; 198; 200]
+
+// Combining Functions
+let firstHundred = [0..100]
+List.map (fun x -> x * 2) (List.filter (fun x -> x % 2 = 0) firstHundred)
+In this example, the List.filter excludes all of the odd numbers from firstHundred before List.map doubles them. The result is a new list containing the first 100 even numbers doubled
+
+
