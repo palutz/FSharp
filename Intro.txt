@@ -79,3 +79,5 @@ List.map (fun x -> x * 2) (List.filter (fun x -> x % 2 = 0) firstHundred)
 In this example, the List.filter excludes all of the odd numbers from firstHundred before List.map doubles them. The result is a new list containing the first 100 even numbers doubled
 
 
+
+
