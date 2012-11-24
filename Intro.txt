@@ -82,4 +82,18 @@ In this example, the List.filter excludes all of the odd numbers from firstHundr
 // FORWARD PIPE OPERATOR
 // This one line of code takes the first 100 integers, filters out the odd numbers, doubles them, and then adds them together.
 List.sum (List.map (fun x -> x * 2) (List.filter (fun x -> x % 2 = 0) [0..100])) // quite difficul to read (if you go forward..)
+// so better to split and use the forward pipe operator
+[0..100]
+|> List.filter (fun x -> x % 2 = 0)
+|> List.map (fun x -> x * 2)
+|> List.sum
+// The |> operator allows you to reorder your code by specifying the last argument of a function before you call it. This example is functionally equivalent to the previous code, but it reads much more cleanly.
+// First, it creates a list of numbers. Then, it pipes that list of numbers to filter out the odds. Next, it pipes that result to List.map to double it. Finally, it pipes the doubled numbers to List.sum to add them together.
 
+// Writing the same function in two different way leveraging the Forward Pipe Operator ( |> )
+List.sum (List.map (fun x -> x * 2) (List.filter (fun x -> x % 2 = 0) [0..100]))
+
+[0..100]
+|> List.filter(fun x-> x % 2 = 0)
+|> List.map (fun x -> x * 2)
+|> List.sum
