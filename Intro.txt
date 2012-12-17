@@ -97,3 +97,4 @@ List.sum (List.map (fun x -> x * 2) (List.filter (fun x -> x % 2 = 0) [0..100]))
 |> List.filter(fun x-> x % 2 = 0)
 |> List.map (fun x -> x * 2)
 |> List.sum
+
