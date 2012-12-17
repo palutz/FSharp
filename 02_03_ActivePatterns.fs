@@ -31,6 +31,14 @@ let calcResult' = 17 |> add10 |> mult5
 
 
 // using composition operator
-
+// in this case the data move from left to right. First add10 then mult5
 let add10mult5 = add10 >> mult5
+// so we will pass 17 the call the add10 and then the result will be passed to mult5
 let calcResult'' = add10mult5 17    // same as all the other calcResult
+
+// we can also use the pipeline in the opposite way (mult5 then add10)
+let add10mult5' = add10 << mult5
+
+// always pay attention to the TYPE of the parameters
+
+// Composition allow to create new funcionts from old functions, using them as a composition block.
